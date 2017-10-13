@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.devf5.arthursalgado.swoosh.SkillActivity">
+    tools:context="com.devf5.arthursalgado.swoosh.Controller.SkillActivity">
 
     <ImageView
         android:id="@+id/imageView4"
@@ -61,24 +61,26 @@
         app:layout_constraintTop_toBottomOf="@+id/textView5">
 
         <ToggleButton
-            android:id="@+id/toggleButton3"
+            android:id="@+id/beginnerSkillButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="16dp"
             android:layout_weight="1"
             android:background="@drawable/swoosh_toggle"
+            android:onClick="onBeginnerClicked"
             android:text="@string/beginner"
             android:textColor="#fff"
             android:textOff="@string/beginner"
             android:textOn="@string/beginner" />
 
         <ToggleButton
-            android:id="@+id/toggleButton4"
+            android:id="@+id/ballerSkillButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_weight="1"
             android:background="@drawable/swoosh_toggle"
+            android:onClick="onBallerClicked"
             android:text="@string/baller"
             android:textColor="#fff"
             android:textOff="@string/baller"
@@ -86,7 +88,7 @@
     </LinearLayout>
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/finishedSkillButton"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="16dp"
@@ -94,6 +96,7 @@
         android:layout_marginStart="16dp"
         android:background="@drawable/swossh_button"
         android:fontFamily="@font/montserrat"
+        android:onClick="onSkillFinishedClicked"
         android:text="@string/finished"
         android:textColor="#fff"
         android:textSize="14sp"

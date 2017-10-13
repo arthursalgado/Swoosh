@@ -1,4 +1,4 @@
-package com.devf5.arthursalgado.swoosh
+package com.devf5.arthursalgado.swoosh.Controller
 
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
