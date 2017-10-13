@@ -4,28 +4,26 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
-import com.devf5.arthursalgado.swoosh.Utilities.EXTRA_LEAGUE
+import com.devf5.arthursalgado.swoosh.Model.Player
 import com.devf5.arthursalgado.swoosh.R
-import com.devf5.arthursalgado.swoosh.Utilities.EXTRA_SKILL
+import com.devf5.arthursalgado.swoosh.Utilities.EXTRA_PLAYER
 import kotlinx.android.synthetic.main.activity_skill.*
 
 class SkillActivity : BaseActivity() {
 
-    var league = ""
-    var selectedSkill = ""
+    lateinit var player : Player // lateinit significa que vamos inicializar em algum momento a variável não necessariamente agora
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_skill)
 
-        league = intent.getStringExtra(EXTRA_LEAGUE)
+        player = intent.getParcelableExtra(EXTRA_PLAYER)
     }
 
     fun onSkillFinishedClicked(view: View) {
-        if(selectedSkill != "") {
+        if(player.skill != "") {
             val finishedActivity = Intent(this, FinishedActivity::class.java)
-            finishedActivity.putExtra(EXTRA_LEAGUE, league)
-            finishedActivity.putExtra(EXTRA_SKILL, selectedSkill)
+            finishedActivity.putExtra(EXTRA_PLAYER, player)
             startActivity(finishedActivity)
         } else {
             Toast.makeText(this, "Please select a skill level.", Toast.LENGTH_SHORT).show()
@@ -34,11 +32,11 @@ class SkillActivity : BaseActivity() {
 
     fun onBeginnerClicked(view: View) {
         ballerSkillButton.isChecked = false
-        selectedSkill = "beginner"
+        player.skill = "beginner"
     }
 
     fun onBallerClicked(view: View) {
         beginnerSkillButton.isChecked = false
-        selectedSkill = "baller"
+        player.skill = "baller"
     }
 }
