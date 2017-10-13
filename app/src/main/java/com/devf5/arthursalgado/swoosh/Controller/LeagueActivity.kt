@@ -13,9 +13,23 @@ class LeagueActivity : BaseActivity() {
 
     var player = Player("", "")
 
+    override fun onSaveInstanceState(outState: Bundle?) {
+        super.onSaveInstanceState(outState)
+        outState?.putParcelable(EXTRA_PLAYER, player)
+        // Quando rotaciona o app é destruído e criado uma nova 'instance', assim precisamos salvar o que foi selecionado
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_league)
+    }
+
+    override fun onRestoreInstanceState(savedInstanceState: Bundle?) {
+        super.onRestoreInstanceState(savedInstanceState)
+        // Aqui recuperamos o que selecionamos após a rotação. Se foi feito alguma.
+        if(savedInstanceState != null) {
+            player = savedInstanceState.getParcelable(EXTRA_PLAYER)
+        }
     }
 
     fun leagueNextClicked(view: View) {

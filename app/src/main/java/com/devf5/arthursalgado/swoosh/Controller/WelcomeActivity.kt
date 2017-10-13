@@ -5,7 +5,7 @@ import android.os.Bundle
 import com.devf5.arthursalgado.swoosh.R
 import kotlinx.android.synthetic.main.activity_welcome.*
 
-class WelcomeActivity : BaseActivity() {
+class   WelcomeActivity : BaseActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

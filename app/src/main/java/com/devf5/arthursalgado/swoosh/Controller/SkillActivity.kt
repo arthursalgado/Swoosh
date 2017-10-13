@@ -13,11 +13,25 @@ class SkillActivity : BaseActivity() {
 
     lateinit var player : Player // lateinit significa que vamos inicializar em algum momento a variável não necessariamente agora
 
+    override fun onSaveInstanceState(outState: Bundle?) {
+        super.onSaveInstanceState(outState)
+        outState?.putParcelable(EXTRA_PLAYER, player)
+        // Quando rotaciona o app é destruído e criado uma nova 'instance', assim precisamos salvar o que foi selecionado
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_skill)
 
         player = intent.getParcelableExtra(EXTRA_PLAYER)
+    }
+
+    override fun onRestoreInstanceState(savedInstanceState: Bundle?) {
+        super.onRestoreInstanceState(savedInstanceState)
+        // Aqui recuperamos o que selecionamos após a rotação. Se foi feito alguma.
+        if(savedInstanceState != null) {
+            player = savedInstanceState.getParcelable(EXTRA_PLAYER)
+        }
     }
 
     fun onSkillFinishedClicked(view: View) {
